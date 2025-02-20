@@ -41,7 +41,7 @@ fi
 
 # Mask secrets to show *** and the last 4 characters
 if [[ "$MASK_SECRETS" == "true" ]]; then
-    MASKED_RESULT=$(echo "$SCAN_RESULT" | sed -E 's/(value: )([a-zA-Z0-9]{1,})(.{4}$)/\1****\3/')
+    MASKED_RESULT=$(echo "$SCAN_RESULT" | sed -E 's/(value: |linecontent: )(.+?)(.{4})/\1****\3/')
 else
     MASKED_RESULT="$SCAN_RESULT"
 fi
